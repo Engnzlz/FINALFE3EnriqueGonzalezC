@@ -28,7 +28,7 @@ h1{
 }
 
 button{
-  background-color: rgb(104, 15, 103);
+  background-color: rgb(216, 83, 214);
   width: 130px;
   height: 30px;
   border-radius: 10px;
@@ -43,7 +43,7 @@ nav{
   padding: 1rem;
   width: 100vw;
   height: 50px;
-  background-color: rgb(38, 7, 67);
+  background-color: rgb(113, 23, 197);
 }
 nav ul {
   display: flex;
@@ -185,7 +185,7 @@ td, th {
 }
 
 tr:nth-child(even) {
-  background-color: #dddddd;
+  background-color: #3c0101;
 }
 
 .dark{
