@@ -36,7 +36,7 @@ export const AppProvider = ({ children }) => {
 
   // Obtener los datos de la API
   useEffect(() => {
-    fetch('url-de-tu-api') // Reemplaza 'url-de-tu-api' con la URL de tu API
+    fetch('https://jsonplaceholder.typicode.com/users') // Reemplaza 'url-de-tu-api' con la URL de tu API
       .then(response => response.json())
       .then(data => dispatch({ type: 'SET_DATA', payload: data }))
       .catch(error => console.error('Error:', error));
