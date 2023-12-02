@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import Detail from "../Routes/Detail";
+import { Link, NavLink } from "react-router-dom";
 
 
 const Card = ({ userId }) => {
@@ -33,10 +35,12 @@ const Card = ({ userId }) => {
       {user ? (
         <>
           <img src="https://cdn-icons-png.flaticon.com/512/194/194918.png" alt="Icon" />
+          <NavLink to={`/detail/${userId}`}>
           <h2>{user.name}</h2>
+          </NavLink>
           <h3>{user.username}</h3>
           <h4>{user.id}</h4>
-          <button onClick={addFav} className="favButton">Add fav</button>
+          <button className="FavButton"onClick={addFav} >Favoritos</button>
         </>
       ) : (
         <p>Loading...</p>

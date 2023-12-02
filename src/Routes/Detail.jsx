@@ -1,24 +1,49 @@
-import React from 'react'
-import { useParams } from 'react-router-dom'
-
-
-//Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import Navbar from "../Components/Navbar";
+import Footer from "../Components/Footer";
 
 const Detail = () => {
- 
-  // Consumiendo el parametro dinamico de la URL deberan hacer un fetch a un user en especifico
+  const { id } = useParams();
+  const [user, setUser] = useState(null);
 
-  const { id } = useParams()
-  console.log(id);
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const response = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`);
+        const data = await response.json();
+        setUser(data);
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
+
+    fetchUser();
+  }, [id]);
 
   return (
-    <>
-      <h1>Detail Dentist id </h1>
-      <h2>{id}</h2>
-      {/* aqui deberan renderizar la informacion en detalle de un user en especifico */}
-      {/* Deberan mostrar el name - email - phone - website por cada user en especifico */}
-    </>
-  )
-}
+    <div className="detail">
+      {user ? (
+        <>
+          <Navbar />
+          
+          <div className="detailCard">
+          <img src="https://cdn-icons-png.flaticon.com/512/194/194918.png" alt="Icon"/>
+          <h2>{user.name}</h2>
+          <p>{user.username}</p>
+          <p>{user.email}</p>
+          <p>{user.phone}</p>
+          <p>{user.website}</p>
+          </div>
 
-export default Detail
+
+          <Footer />
+        </>
+      ) : (
+        <p>Loading...</p>
+      )}
+    </div>
+  );
+};
+
+export default Detail;

@@ -23,8 +23,8 @@ const Form = () => {
   };
 
   return (
-<div className="formPrincipal">
-  <form onSubmit={handleSubmit}>
+<div className="Divform">
+  <form className="FormPrincipal" onSubmit={handleSubmit}>
     <div className="inputField">
       <label>
         Nombre completo:

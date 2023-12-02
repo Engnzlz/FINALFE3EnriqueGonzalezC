@@ -13,11 +13,13 @@ const AppContext = createContext();
 const reducer = (state, action) => {
   switch (action.type) {
     case 'TOGGLE_THEME':
+      // Cambia el tema de claro a oscuro y viceversa
       return {
         ...state,
         theme: state.theme === 'light' ? 'dark' : 'light',
       };
     case 'SET_DATA':
+      // Actualiza los datos con la información de la API
       return {
         ...state,
         data: action.payload,
