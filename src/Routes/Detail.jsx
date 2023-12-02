@@ -2,8 +2,16 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
+import { useAppContext } from "../Components/utils/global.context"; 
+
+
 
 const Detail = () => {
+
+  const { state } = useAppContext();
+  const themeClass = state.theme ? "dark" : "light";
+
+
   const { id } = useParams();
   const [user, setUser] = useState(null);
 

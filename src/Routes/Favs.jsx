@@ -1,30 +1,33 @@
-import React from "react";
-import Card from "../Components/Card";
-import Navbar from "../Components/Navbar";
-import Footer from "../Components/Footer";
-import { useAppContext } from "../Components/utils/global.context"; // Importa useAppContext
-
-//Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
+import React from 'react';
+import Navbar from '../Components/Navbar';
+import Footer from '../Components/Footer';
+import { useAppContext } from '../Components/utils/global.context';
+import Card from '../Components/Card';
 
 const Favs = () => {
-  const { state } = useAppContext(); // Usa useAppContext
-
-  // Aplica la clase CSS correspondiente al tema
+  const { state } = useAppContext();
   const themeClass = state.theme === 'dark' ? 'dark' : '';
 
-  // Obtiene los destacados del localStorage
-  const favs = JSON.parse(localStorage.getItem('favs')) || [];
+  // Obtiene los favoritos directamente del localStorage en la función de renderizado
+  const favs = JSON.parse(localStorage.getItem('FavCards')) || [];
 
   return (
-    <div className={`card-grid ${themeClass}`}> {/* Aplica la clase CSS correspondiente al tema */}
+    <div className={`card-grid ${themeClass}`}>
       <Navbar />
-      <h1>Dentists Favs</h1>
-      {/* este componente debe consumir los destacados del localStorage */}
-      {/* Deberan renderizar una Card por cada uno de ellos */}
-      {favs.map(fav => <Card key={fav.id} {...fav} />)}
+      <h1 className='tituloFav'>Dentists Favs</h1>
+      {favs.length > 0 ? (
+        favs.slice(0, ).map((fav, index) => (
+          <Card key={index} userId={fav.id} />
+        ))
+      ) : (
+        <p>No hay favoritos.</p>
+      )}
       <Footer />
     </div>
   );
 };
 
 export default Favs;
+
+
+

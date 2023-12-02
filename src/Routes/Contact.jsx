@@ -2,10 +2,17 @@ import React from 'react'
 import Form from '../Components/Form'
 import Navbar from '../Components/Navbar'
 import Footer from '../Components/Footer'
+import { useAppContext } from '../Components/utils/global.context';
 
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
 const Contact = () => {
+
+  const { state } = useAppContext(); // Usa useAppContext
+
+  // Aplica la clase CSS correspondiente al tema
+  const themeClass = state.theme === 'dark' ? 'dark' : '';
+
   return (
     
     <div>
